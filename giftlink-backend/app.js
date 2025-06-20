@@ -1,3 +1,5 @@
+const searchRoutes = require('./routes/searchRoutes');
+
 /*jshint esversion: 8 */
 require('dotenv').config();
 const express = require('express');
@@ -9,7 +11,7 @@ const {loadData} = require("./util/import-mongo/index");
 
 
 const app = express();
-app.use("*",cors());
+app.use('/api/search', searchRoutes);
 const port = 3060;
 
 // Connect to MongoDB; we just do this one time
@@ -23,7 +25,12 @@ app.use(express.json());
 
 // Route files
 // Gift API Task 1: import the giftRoutes and store in a constant called giftroutes
-//{{insert code here}}
+// Gift API Task 1: import the giftRoutes and store in a constant called giftroutes
+const giftRoutes = require('./routes/giftRoutes');
+
+// Search API Task 1: import the searchRoutes and store in a constant called searchRoutes
+const searchRoutes = require('./routes/searchRoutes');
+
 
 // Search API Task 1: import the searchRoutes and store in a constant called searchRoutes
 //{{insert code here}}
@@ -37,6 +44,12 @@ app.use(pinoHttp({ logger }));
 // Use Routes
 // Gift API Task 2: add the giftRoutes to the server by using the app.use() method.
 //{{insert code here}}
+// Gift API Task 2: add the giftRoutes to the server by using the app.use() method.
+app.use('/api/gifts', giftRoutes);
+
+// Search API Task 2: add the searchRoutes to the server by using the app.use() method.
+app.use('/api/gifts', searchRoutes);
+
 
 // Search API Task 2: add the searchRoutes to the server by using the app.use() method.
 //{{insert code here}}
