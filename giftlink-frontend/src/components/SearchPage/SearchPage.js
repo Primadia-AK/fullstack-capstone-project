@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { urlConfig } from '../src/config';
+import config from '../../config';
+
 
 function SearchPage() {
   // State untuk input pengguna
@@ -20,7 +21,7 @@ function SearchPage() {
   const handleSearch = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(`${urlConfig.backendUrl}/api/gifts/search`, {
+        const response = await fetch(`${config.backendUrl}/api/gifts/search`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
